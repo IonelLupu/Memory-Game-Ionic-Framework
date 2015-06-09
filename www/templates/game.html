@@ -1,0 +1,27 @@
+<!--
+Create tabs with an icon and label, using the tabs-positive style.
+Each tab's child <ion-nav-view> directive will have its own
+navigation history that also transitions its views in and out.
+-->
+<ion-view view-title="Scor: {{ score }} puncte">
+	<ion-content class="padding">
+		
+		<h3 class="text-center">
+			Nivel: {{ level.name }}. <span class='ion-ios-stopwatch-outline'></span> {{ time }} s
+		<h3>
+		<div class="gameBoard">
+			<div class="gameRow" ng-repeat="(rowKey,row) in cards">
+				<card 
+					ng-repeat = "(cardKey,card) in row" 
+					icon      = "card.icon" 
+					ng-click  = "card.tog=!card.tog;checkCard(rowKey,cardKey)" 
+					ng-class  = '{"rotate":card.tog}' 
+				></card>
+			</div>
+		</div>
+		<div class="text-center">
+			<button ng-click="newGame()" class = "button button-full button-assertive">Joc nou</button>
+		</div>
+
+	</ion-content>
+</ion-view>

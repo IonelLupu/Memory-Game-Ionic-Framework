@@ -1,0 +1,25 @@
+<!--
+Create tabs with an icon and label, using the tabs-positive style.
+Each tab's child <ion-nav-view> directive will have its own
+navigation history that also transitions its views in and out.
+-->
+<ion-view view-title="Alege nivel">
+	<ion-content class="padding">
+		
+		<button 
+			ng-click  = "startGame($index)" 
+			class     = "button button-full button-assertive"
+			ng-repeat = "level in gameLevels" 
+			>
+
+			<h4><span class="ion-ios-pulse-strong"></span> {{level.name}} <span class="ion-ios-pulse-strong"></span></h4>
+			<h5>
+				{{level.name}}
+				<span class="ion-calculator"></span> {{level.priceOff}}% reducere, 
+				<span class="ion-ios-stopwatch-outline"></span> {{level.time}}s ,  
+			</h5>
+
+		</button>
+
+	</ion-content>
+</ion-view>
