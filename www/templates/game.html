@@ -3,25 +3,33 @@ Create tabs with an icon and label, using the tabs-positive style.
 Each tab's child <ion-nav-view> directive will have its own
 navigation history that also transitions its views in and out.
 -->
-<ion-view view-title="Scor: {{ score }} puncte">
-	<ion-content class="padding">
+<ion-view view-title="Scor: {{ score }} puncte" ng-class='{"shake":gameStop}' >
+	<ion-content id="content">
 		
 		<h3 class="text-center">
 			Nivel: {{ level.name }}. <span class='ion-ios-stopwatch-outline'></span> {{ time }} s
 		<h3>
-		<div class="gameBoard">
+		<div class="gameBoard" ng-init="cardStyle = getCardStyle()">
 			<div class="gameRow" ng-repeat="(rowKey,row) in cards">
 				<card 
 					ng-repeat = "(cardKey,card) in row" 
 					icon      = "card.icon" 
-					ng-click  = "card.tog=!card.tog;checkCard(rowKey,cardKey)" 
-					ng-class  = '{"rotate":card.tog}' 
+					ng-click  = "checkCard(rowKey,cardKey)" 
+					ng-class  = '{"rotate":card.show}' 
+					ng-style = "cardStyle"
 				></card>
 			</div>
 		</div>
-		<div class="text-center">
-			<button ng-click="newGame()" class = "button button-full button-assertive">Joc nou</button>
-		</div>
+
+		<h4 
+			class    = "text-center gameEnd" 
+			ng-show  = "gameStop" 
+			ng-class = '{"scaleDown":gameStop}' 
+		>Felicitari !!! <br> Ai adunat {{ score }} puncte </h4>
 
 	</ion-content>
+	<ion-footer-bar class="text-center bar-assertive">
+		<span class="button button-dark" ng-click="showMenu()">Meniu</span>
+		<span class="button button-dark" ng-click="newGame()">Joc nou</span>
+	</ion-footer-bar>
 </ion-view>

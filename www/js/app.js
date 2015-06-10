@@ -31,17 +31,17 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
 
 	// setup an abstract state for the mains directive
 	.state('main', {
-		url: "/main",
+		url:         "/main",
 		templateUrl: "templates/main.html",
-		controller: 'MainController'
+		controller:  'MainController'
 	})
 
 	// Each main has its own nav history stack:
 
 	.state('game', {
-		url: '/game/:level',
+		url:         '/game/:level',
 		templateUrl: 'templates/game.html',
-		controller: 'GameController'
+		controller:  'GameController'
 	})
 
 	// if none of the above states are matched, use this as the fallback

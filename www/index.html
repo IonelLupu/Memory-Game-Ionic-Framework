@@ -24,46 +24,97 @@
 		<script src="js/services.js"></script>
 		<script src="js/directives.js"></script>
 		<style>
+			button h4, h5{
+				color: #fff !important;
+			}
 			.gameBoard{
-				perspective: 1000;
+				-webkit-perspective: 1000;
 			}
 			card{
 				border-radius: 5px;
 				display: inline-block;
-				width: 50px;
-				height: 50px;
+				max-width: 50px;
+				max-height: 50px;
 				padding: 2mm;
 				margin: 10px 10px;
 				box-shadow: 0px 0px 5px 2px rgba(50, 50, 50, 0.5);
-				transition: 0.6s;
-				transform-style: preserve-3d;
-
+				-webkit-transition: 0.6s;
+				-webkit-transform-style: preserve-3d;
 				position: relative;
 			}
 			.rotate{
-				transform: rotateY(-180deg);
+				-webkit-transform: rotateY(-180deg);
 			}
 			card span{
+				border-radius: 5px;
 				width: 100%;
 				height: 100%;
-				backface-visibility: hidden;
+				-webkit-backface-visibility: hidden;
 				position: absolute;
 				top: 0;
 				left: 0;
 			}
 			card span:first-child{
 				background: url("img/smart.png");
-				background-size: contain;
+				background-size: cover;
 				z-index: 2;
 				/* for firefox 31 */
-				transform: rotateY(0deg);
+				-wenkit-transform: rotateY(0deg);
 			}
 			card span:last-child{
-				background-color: yellow;
-				transform: rotateY(-180deg);
+				-webkit-transform: rotateY(-180deg);
 			}
 			.gameRow{
 				text-align: center;
+			}
+			.gameEnd{
+				opacity:            0;
+				z-index:            -1;
+				position:           absolute;
+				top:                30%;
+				width:              350px;
+				left:               50%;
+				margin-left:        -175px;
+				font-size:          35px;
+				padding:            10px;
+				-webkit-transform:  scale(2);
+				border-radius:      10px;
+				background-color:   rgba(255,255,255,0.8);
+				box-shadow:         0px 0px 5px 2px rgba(50, 50, 50, 0.5);
+				color:              red;
+				-webkit-transition: all 0.2s;
+
+				-webkit-transition-timing-function: ease-in;
+			}
+
+			.scaleDown{
+				opacity: 1;
+				z-index:                    99;
+				-webkit-transform : rotateZ(-25deg) scale(1.0);
+			}
+
+			@-webkit-keyframes thumb {
+				0% {
+					-webkit-transform: scale(1); 
+					-webkit-transform: rotateX(15deg) rotate(5deg)
+				}
+				50% {
+					-webkit-transform: scale(0.9); 
+					-webkit-transform: rotateX(-15deg) rotate(-5deg)
+				}
+				100% {
+					-webkit-transform: scale(1); 
+					-webkit-transform: rotateX(15deg)
+				}
+			}
+
+			.shake
+			{
+				-webkit-animation-delay: 0.2s; /* Chrome, Safari, Opera */
+				-webkit-animation-name: thumb;
+				-webkit-animation-duration: 200ms;
+				-webkit-transform-origin:50% 50%;
+				-webkit-animation-timing-function: linear;
 			}
 		
 		</style>
